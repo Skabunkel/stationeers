@@ -24,7 +24,7 @@ acos adj adj
 div adj adj TWOPI
 
 beq inc 1 skip
-sub adj 1 adj # Adjusting if it on the increasing side.
+sub adj 1 adj # Adjusting if it on the decreasing side.
 skip:
 
 add adj adj 0.5 # Adjust because 0 is up towards the sky.
