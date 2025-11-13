@@ -1,0 +1,21 @@
+# Simple code to stop and start the lights in a green house automatically based on sun position.
+define growLightHash -1758710260
+define onAngle 70
+alias daySensor d0
+alias Vert r1
+
+alias trigger r3
+alias latch r4
+
+main:
+l Vert daySensor Vertical
+sle trigger Vert onAngle # If less than onAngle 1 else 0 
+
+# Trigger on and off
+beq trigger latch noLatch
+move latch trigger
+sb growLightHash On latch
+noLatch:
+
+yield
+j main

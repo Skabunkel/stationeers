@@ -1,0 +1,44 @@
+define TWOPI 6.283185307179586
+
+alias daySensor d0
+alias minuteDisplay d4
+alias hourDisplay d5
+
+alias Vert r1
+alias oldVert r2
+alias adj r3
+alias inc r4
+
+alias minutes r11
+alias hours r12
+
+main:
+l Vert daySensor Vertical
+sge inc Vert oldVert
+
+div adj Vert 90
+sub adj 1 adj
+
+acos adj adj
+div adj adj TWOPI
+
+beq inc 1 skip
+sub adj 1 adj
+skip:
+
+add adj adj 0.5 # Adjust because 0 is up towards the sky.
+mul adj adj 1440 # number of minutes in day. 
+
+mod minutes adj 60 # long division
+div adj adj 60
+mod hours adj 24 # fix issue added by 180 degree adjustment.
+
+floor hours hours
+floor minutes minutes
+
+s minuteDisplay Setting minutes
+s hourDisplay Setting hours
+
+move oldVert Vert
+yield
+j main

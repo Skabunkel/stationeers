@@ -1,0 +1,31 @@
+# Part of this code came from a reddit post i think unsure.
+# Idea is push data to stack then manipulate stackpointer to read each one in a loop.
+
+define machineHash 690945935
+alias rea r0 # regagents
+alias purge r1
+alias machine r15
+
+move sp 0
+push HASH("Stack Centrifuge 1") # First centrifuge.
+push HASH("Stack Centrifuge 2") # second centrifuge.
+push HASH("Stack Centrifuge 3") # third centrifuge.
+
+reinit:
+move sp 3 # Reset stack pointer 
+yield
+start:
+pop machine
+lbn rea machineHash machine Reagents Sum
+
+sge purge rea 400 # If the centrifuge is full empty it.
+beqz purge noPurge
+sbn machineHash machine Open 1
+noPurge:
+
+bge rea 5 noReset # If the centrifuge has 5 or less items in its reagent storage restart it.
+sbn machineHash machine Open 0
+noReset:
+
+beqz sp reinit
+j start
