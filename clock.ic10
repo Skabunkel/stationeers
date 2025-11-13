@@ -16,6 +16,7 @@ main:
 l Vert daySensor Vertical
 sge inc Vert oldVert
 
+# I basiclly turn the transition from 0 to 180 back to 0 into a line from 0 to 1  
 div adj Vert 90
 sub adj 1 adj
 
@@ -23,11 +24,11 @@ acos adj adj
 div adj adj TWOPI
 
 beq inc 1 skip
-sub adj 1 adj
+sub adj 1 adj # Adjusting if it on the increasing side.
 skip:
 
 add adj adj 0.5 # Adjust because 0 is up towards the sky.
-mul adj adj 1440 # number of minutes in day. 
+mul adj adj 1440 # multiply with number of minutes in day. 
 
 mod minutes adj 60 # long division
 div adj adj 60
