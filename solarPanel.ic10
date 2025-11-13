@@ -1,0 +1,25 @@
+define normalSolarPanels -539224550 # Solar Panel (Dual)
+define heavySolarPanels -1545574413 # Solar Panel (Heavy Dual)
+
+alias sensor d0
+
+define HOffset 180 # Angular adjustment depends on pannel plasment.
+define VOffset 90 # Angular adjustment depends on pannel plasment.
+alias H r10
+alias V r11
+
+main:
+l H sensor Horizontal
+l V sensor Vertical
+
+add r0 H HOffset
+add r1 V VOffset
+
+sb normalSolarPanels Horizontal r0
+sb normalSolarPanels Vertical r1
+
+sb heavySolarPanels Horizontal r0
+sb heavySolarPanels Vertical r1
+
+yield
+j main

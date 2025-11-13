@@ -11,3 +11,6 @@ Simple code to turn on an turn off the lights in a green house.
 
 ## autoEmpty.ic10
 Empties 3 Centrifuges when they are full and restarts them.
+
+## solarPanel.ic10
+Automatic 2 axis tracking for solar pannels.
